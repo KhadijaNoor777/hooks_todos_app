@@ -25,13 +25,24 @@ function App() {
     setTodos([...todos, {id: todos.length + 1, text:todo, complete:false }])
   }
 
+  const editTodo = (etodo) => {
+    console.log(etodo.text);
+    etodo.complete = !etodo.complete
+    console.log(etodo.complete);
+    setTodos(todos.map(todo => (todo.id === etodo.id ? etodo : todo)))
+    //setTodos(todos.filter(todo => todo.id !== etodo.id));
+    // deleteTodo(etodo.id)
+    // setTodos([...todos, {id: etodo.id, text:etodo.text, complete:!etodo.complete }])
+    
+  }
+
   return (
     <div className='App'>
       {/* <h3>Hello {value}</h3> */}
       <h1>Todos</h1>
       <AddTodo addTodo={addTodo} />
       <TodosContext.Provider value={todos}>
-        <Todos deleteTodo={deleteTodo}/>
+        <Todos editTodo={editTodo} deleteTodo={deleteTodo}/>
       </TodosContext.Provider>
       {/* <UserContext.Consumer>
         {(value) => <div>Hello, {value}</div>}
