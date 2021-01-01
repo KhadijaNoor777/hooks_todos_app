@@ -15,7 +15,7 @@ function Todo(props) {
 
     return (
         <div className='todoStyle' style={getStyle}>  
-            <button onClick={()=>props.editTodo(props.todo)}><b>/</b></button>
+            <button className='ebtn' onClick={()=>props.editTodo(props.todo)}><b>✓</b></button>
             {props.todo.text}
             <button className='btnStyle' onClick={()=>props.deleteTodo(props.todo.id)}><b>x</b></button>
             {/* <input type='checkbox' style={{float: 'left'}}/>
